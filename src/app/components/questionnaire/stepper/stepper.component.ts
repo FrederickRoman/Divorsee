@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 /**
- * @title Stepper with editable steps
+ * @title Stepper vertical
  */
 @Component({
   selector: 'stepper',
@@ -10,11 +10,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['stepper.component.scss']
 })
 export class StepperComponent implements OnInit {
+  isLinear = false;
   firstFormGroup: FormGroup = new FormGroup({});
   secondFormGroup: FormGroup = new FormGroup({});
-  isEditable = false;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
