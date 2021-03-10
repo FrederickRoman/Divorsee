@@ -1,7 +1,20 @@
 .mat-stepper-horizontal {
-    margin-top: 8px;
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+
+.questionnaire-question_p{
+  color:#fff;
+  padding-top: 10px;
+}
+
+$small-handset-breakpoint: 360px;
+@media only screen and (max-width: $small-handset-breakpoint) {
+  ::ng-deep .mat-vertical-content {
+    padding: 0 10px 10px 10px !important;
   }
-  
-  .mat-form-field {
-    margin-top: 16px;
-  }
+}
