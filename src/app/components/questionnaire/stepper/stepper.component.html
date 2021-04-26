@@ -4,41 +4,51 @@
 <mat-vertical-stepper [linear]="isLinear" #stepper>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <!-- <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field> -->
-      <mat-grid-list cols="2" rowHeight="2:1">
-        <mat-grid-tile>
-          <mat-label
-            ><p class="questionnaire-question_p">
-              1. If one of us apologizes when our discussion deteriorates, the
-              discussion ends.
-            </p>
-          </mat-label></mat-grid-tile
+      <ng-template matStepLabel>Questionnaire</ng-template>
+      <span *ngFor="let question of questions">
+        <mat-label>
+          <p class="questionnaire-question_p">
+            {{ question.text }}
+          </p>
+        </mat-label>
+        <mat-radio-group
+          aria-label="Select an option"
+          [formControlName]="question.ctrl"
         >
-        <mat-grid-tile>
-          <mat-radio-group
-            aria-label="Select an option"
-            formControlName="firstCtrl"
-          >
-            <mat-grid-list cols="5" rowHeight="5:1">
-              <mat-radio-button value="1"></mat-radio-button>
-              <mat-radio-button value="2"></mat-radio-button>
-              <mat-radio-button value="3"></mat-radio-button>
-              <mat-radio-button value="4"></mat-radio-button>
-              <mat-radio-button value="5"></mat-radio-button>
-            </mat-grid-list> </mat-radio-group
-        ></mat-grid-tile>
-      </mat-grid-list>
-
+          <mat-radio-button
+            *ngFor="let value of values"
+            [value]="value"
+          ></mat-radio-button> </mat-radio-group
+      ></span>
       <div>
         <button mat-button matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
+  <!-- <mat-step [stepControl]="IKnowFormGroup">
+    <form [formGroup]="IKnowFormGroup">
+      <ng-template matStepLabel>I know ...</ng-template>
+      <span *ngFor="let question of iKnow_questions">
+        <mat-label>
+          <p class="questionnaire-question_p">
+            {{ question.text }}
+          </p>
+        </mat-label>
+        <mat-radio-group
+          aria-label="Select an option"
+          [formControlName]="question.ctrl"
+        >
+          <mat-radio-button
+            *ngFor="let value of values"
+            [value]="value"
+          ></mat-radio-button> </mat-radio-group
+      ></span>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step> -->
+  <!--   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Fill out your address</ng-template>
       <mat-form-field>
@@ -55,7 +65,7 @@
         <button mat-button matStepperNext>Next</button>
       </div>
     </form>
-  </mat-step>
+  </mat-step> -->
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
     <p>You are now done.</p>

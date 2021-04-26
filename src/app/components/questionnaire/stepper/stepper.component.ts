@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DivorcePredictorService } from 'src/app/service/divorcePredictor/divorce-predictor.service';
 
 /**
  * @title Stepper vertical
@@ -7,21 +8,34 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'stepper',
   templateUrl: 'stepper.component.html',
-  styleUrls: ['stepper.component.scss']
+  styleUrls: ['stepper.component.scss'],
 })
 export class StepperComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup = new FormGroup({});
   secondFormGroup: FormGroup = new FormGroup({});
+  IKnowFormGroup: FormGroup = new FormGroup({});
 
-  constructor(private _formBuilder: FormBuilder) {}
+  values: string[] = ['1', '2', '3', '4', '5'];
+
+  questions: any = null;
+
+  constructor(
+    private _formBuilder: FormBuilder,
+    private dp: DivorcePredictorService
+  ) {}
+
+  get controlsConfig() {
+    const validatorMapper = (q: any) => ({
+      [q.ctrl]: ['', Validators.required],
+    });
+    const mergeAllReducer = (acc: any, cur: any) => ({ ...acc, ...cur });
+    return this.questions.map(validatorMapper).reduce(mergeAllReducer);
+  }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
+    this.questions = this.dp.getQuestions();
+    this.firstFormGroup = this._formBuilder.group(this.controlsConfig);
+    this.firstFormGroup.valueChanges.subscribe(console.log);
   }
 }

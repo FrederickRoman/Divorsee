@@ -22,6 +22,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { HomeComponent } from './views/home/home.component';
 import { QuestionnaireComponent } from './components/questionnaire/questionnaire.component';
 import { StepperComponent } from './components/questionnaire/stepper/stepper.component';
+import { QuestionComponent } from './components/questionnaire/question/question.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { StepperComponent } from './components/questionnaire/stepper/stepper.com
     AppComponent,
     HomeComponent,
     QuestionnaireComponent,
-    StepperComponent
+    StepperComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,
