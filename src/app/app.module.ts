@@ -13,6 +13,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 import {MatRadioModule} from '@angular/material/radio'; 
 
+import {MatDividerModule} from '@angular/material/divider'; 
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
@@ -46,6 +48,7 @@ import { QuestionComponent } from './components/questionnaire/question/question.
     ReactiveFormsModule,
     MatInputModule,
     MatRadioModule,
+    MatDividerModule,
     MatGridListModule
   ],
   exports: [ MatFormFieldModule, MatInputModule ],

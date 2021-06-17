@@ -5,21 +5,27 @@
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Questionnaire</ng-template>
-      <span *ngFor="let question of questions">
+      <span *ngFor="let question of questions; index as i; last as last">
         <mat-label>
           <p class="questionnaire-question_p">
-            {{ question.text }}
+            {{ i + 1 }}. {{ question.text }}
           </p>
         </mat-label>
         <mat-radio-group
           aria-label="Select an option"
           [formControlName]="question.ctrl"
+          class="questionnaire-question_radio-group"
         >
-          <mat-radio-button
-            *ngFor="let value of values"
-            [value]="value"
-          ></mat-radio-button> </mat-radio-group
-      ></span>
+          <mat-radio-button *ngFor="let value of values" [value]="value">
+          </mat-radio-button>
+        </mat-radio-group>
+        <mat-divider
+          [inset]="true"
+          *ngIf="!last"
+          class="questionnaire-question_divider"
+        ></mat-divider>
+      </span>
+
       <div>
         <button mat-button matStepperNext>Next</button>
       </div>

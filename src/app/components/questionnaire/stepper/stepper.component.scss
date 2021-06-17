@@ -12,6 +12,15 @@
   padding-top: 10px;
 }
 
+.questionnaire-question_radio-group{
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+}
+
+.questionnaire-question_divider{
+  margin: 20px 0px !important
+}
+
 // $small-handset-breakpoint: 360px;
 // @media only screen and (max-width: $small-handset-breakpoint) {
 //   ::ng-deep .mat-vertical-content {
