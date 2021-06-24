@@ -1,4 +1,4 @@
-const questions: string[] = [
+const questions: readonly string[] = [
   'If one of us apologizes when our discussion deteriorates, the discussion ends.',
   'I know we can ignore our differences, even if things get hard sometimes.',
   'When we need it, we can take our discussions with my spouse from the beginning and correct it.',
@@ -55,38 +55,4 @@ const questions: string[] = [
   "I'm not afraid to tell my spouse about her/his incompetence.",
 ];
 
-const haveQuestions = questions.map((q, i) => ({
-  id: i,
-  ctrl: `Q${i}Ctrl`,
-  text: q,
-}));
-
-/* const haveQuestions = [
-  {
-    id: '1',
-    ctrl: 'Q1Ctrl',
-    text: 'have similar values in terms of personal freedom.',
-  },
-  {
-    id: '2',
-    ctrl: 'Q2Ctrl',
-    text: 'have similar sense of entertainment. ',
-  },
-  {
-    id: '3',
-    ctrl: 'Q3Ctrl',
-    text: 'have similar ideas about how marriage should be ',
-  },
-  {
-    id: '4',
-    ctrl: 'Q4Ctrl',
-    text: 'have similar ideas about how roles should be in marriage',
-  },
-  {
-    id: '5',
-    ctrl: 'Q5Ctrl',
-    text: 'similar values in trust',
-  },
-]; */
-
-export default haveQuestions;
+export default questions;

@@ -19,7 +19,8 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "skipLibCheck": true // workaround for https://github.com/tensorflow/tfjs/issues/1241
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

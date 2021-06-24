@@ -20,6 +20,8 @@ export class StepperComponent implements OnInit {
 
   questions: any = null;
 
+  prediction: any = null;
+
   constructor(
     private _formBuilder: FormBuilder,
     private dp: DivorcePredictorService
@@ -27,15 +29,24 @@ export class StepperComponent implements OnInit {
 
   get controlsConfig() {
     const validatorMapper = (q: any) => ({
-      [q.ctrl]: ['', Validators.required],
+      [q.ctrl]: ['3', Validators.required],
     });
     const mergeAllReducer = (acc: any, cur: any) => ({ ...acc, ...cur });
     return this.questions.map(validatorMapper).reduce(mergeAllReducer);
   }
 
-  ngOnInit() {
-    this.questions = this.dp.getQuestions();
-    this.firstFormGroup = this._formBuilder.group(this.controlsConfig);
-    this.firstFormGroup.valueChanges.subscribe(console.log);
+  async ngOnInit() {
+    try {
+      this.questions = this.dp.getQuestions();
+      this.firstFormGroup = this._formBuilder.group(this.controlsConfig);
+      await this.dp.loadDivorcePredictionModel();
+      this.firstFormGroup.valueChanges.subscribe(this.updatePrediction);
+    } catch (error) {
+      console.log(error);
+    }
   }
+
+  private updatePrediction = (form: any): void => {
+    this.prediction = this.dp.getPrediction(form);
+  };
 }
