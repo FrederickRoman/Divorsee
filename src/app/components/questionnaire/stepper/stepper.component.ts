@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DivorcePredictorService } from 'src/app/service/divorcePredictor/divorce-predictor.service';
+import { QuestionProviderService } from 'src/app/service/questionProvider/question-provider.service';
 
 /**
  * @title Stepper vertical
@@ -24,7 +25,8 @@ export class StepperComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private dp: DivorcePredictorService
+    private questionsService: QuestionProviderService,
+    private divorcePredService: DivorcePredictorService
   ) {}
 
   get controlsConfig() {
@@ -37,9 +39,9 @@ export class StepperComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      this.questions = this.dp.getQuestions();
+      this.questions = this.questionsService.getQuestions();
       this.firstFormGroup = this._formBuilder.group(this.controlsConfig);
-      await this.dp.loadDivorcePredictionModel();
+      await this.divorcePredService.setUpDivorcePredictor();
       this.firstFormGroup.valueChanges.subscribe(this.updatePrediction);
     } catch (error) {
       console.log(error);
@@ -47,6 +49,6 @@ export class StepperComponent implements OnInit {
   }
 
   private updatePrediction = (form: any): void => {
-    this.prediction = this.dp.getPrediction(form);
+    this.prediction = this.divorcePredService.getPrediction(form);
   };
 }
