@@ -6,19 +6,31 @@
   margin-top: 16px;
 }
 
-
-.questionnaire-question_p{
-  color:#fff;
-  padding-top: 10px;
-}
-
-.questionnaire-question_radio-group{
+.questionnaire-options_range {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 10px;
   display: grid;
   grid-template-columns: repeat(5, auto);
 }
 
-.questionnaire-question_divider{
-  margin: 20px 0px !important
+.questionnaire-option_always {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.questionnaire-question_p {
+  color: #fff;
+  padding-top: 10px;
+}
+
+.questionnaire-question_radio-group {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+}
+
+.questionnaire-question_divider {
+  margin: 20px 0px !important;
 }
 
 // $small-handset-breakpoint: 360px;

@@ -1,21 +1,14 @@
 import { Injectable } from '@angular/core';
+import IFomatedQuestion from 'src/app/interfaces/IFomatedQuestion';
 import questions from './questions';
-
-interface IFomatedQuestion {
-  id: number;
-  ctrl: string;
-  text: string;
-}
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuestionProviderService {
-  public readonly numOfQns: number = questions.length;
+  readonly numOfQns: number = questions.length;
 
-  constructor() {}
-
-  public getQuestions(): IFomatedQuestion[] {
+  getQuestions(): IFomatedQuestion[] {
     return this.formatQuestions(questions);
   }
 

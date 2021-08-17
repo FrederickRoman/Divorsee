@@ -12,21 +12,18 @@ import {
 } from '@tensorflow/tfjs';
 import to from 'await-to-js';
 import { QuestionProviderService } from '../questionProvider/question-provider.service';
-
-type responseVal = '1' | '2' | '3' | '4' | '5';
-type tensorShape2D = [number, number];
-type model = LayersModel | null;
+import { responseVal } from 'src/app/types/responseVal';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DivorcePredictorService {
   private readonly NUM_OF_QNS: number = this.questionsService.numOfQns;
-  private readonly INPUT_SHAPE: tensorShape2D = [1, this.NUM_OF_QNS];
-  private model: model = null;
+  private readonly INPUT_SHAPE: [number, number] = [1, this.NUM_OF_QNS];
+  private model: LayersModel | null = null;
   constructor(private questionsService: QuestionProviderService) {}
 
-  public async setUpDivorcePredictor(): Promise<void> {
+  async setUpDivorcePredictor(): Promise<void> {
     try {
       await this.getBackEndReady();
       await this.loadModel();
@@ -36,7 +33,7 @@ export class DivorcePredictorService {
     }
   }
 
-  public getPrediction(form: FormGroup): number[] {
+  getPrediction(form: FormGroup): number[] {
     console.log(form);
     const predictions: number[] = tidy(() => {
       if (this.model) {
@@ -63,8 +60,8 @@ export class DivorcePredictorService {
   }
 
   private async loadModel(): Promise<void> {
-    const MODEL_STATIC_DIR: string = '/assets/tfjs_model/model.json';
-    const [error, model] = await to<model>(loadLayersModel(MODEL_STATIC_DIR));
+    const MODEL_DIR = '/assets/tfjs_model/model.json';
+    const [error, model] = await to<LayersModel>(loadLayersModel(MODEL_DIR));
     if (error) throw new Error('Failed to load model');
     if (model) this.model = model;
   }

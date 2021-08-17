@@ -5,6 +5,17 @@
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Questionnaire</ng-template>
+      <section
+        class="questionnaire-options_range"
+        aria-label="options range never to always"
+      >
+        <div><span>Never</span></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="questionnaire-option_always"><div>Always</div></div>
+      </section>
+      <mat-divider></mat-divider>
       <span *ngFor="let question of questions; index as i; last as last">
         <mat-label>
           <p class="questionnaire-question_p">

@@ -1,7 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
+import IFomatedQuestion from 'src/app/interfaces/IFomatedQuestion';
+import { responseVal } from 'src/app/types/responseVal';
 import { DivorcePredictorService } from 'src/app/service/divorcePredictor/divorce-predictor.service';
 import { QuestionProviderService } from 'src/app/service/questionProvider/question-provider.service';
+
+interface IValid {
+  [x: string]: (
+    | string
+    | ((control: AbstractControl) => ValidationErrors | null)
+  )[];
+}
+const QUESTION_RESPONSE_VALUE_OPTIONS: readonly responseVal[] = Object.freeze([
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+]);
+const INIT_FORMATED_QUESTION: IFomatedQuestion = Object.freeze({
+  id: 0,
+  ctrl: `Q0Ctrl`,
+  text: '',
+});
 
 /**
  * @title Stepper vertical
@@ -17,11 +44,9 @@ export class StepperComponent implements OnInit {
   secondFormGroup: FormGroup = new FormGroup({});
   IKnowFormGroup: FormGroup = new FormGroup({});
 
-  values: string[] = ['1', '2', '3', '4', '5'];
-
-  questions: any = null;
-
-  prediction: any = null;
+  values: readonly responseVal[] = QUESTION_RESPONSE_VALUE_OPTIONS;
+  questions: IFomatedQuestion[] = [INIT_FORMATED_QUESTION];
+  prediction: number[] = [];
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -29,26 +54,28 @@ export class StepperComponent implements OnInit {
     private divorcePredService: DivorcePredictorService
   ) {}
 
-  get controlsConfig() {
-    const validatorMapper = (q: any) => ({
-      [q.ctrl]: ['3', Validators.required],
+  get controlsConfig(): IValid {
+    const assignValidator = (q: IFomatedQuestion): IValid => ({
+      [q.ctrl]: ['', Validators.required],
     });
-    const mergeAllReducer = (acc: any, cur: any) => ({ ...acc, ...cur });
-    return this.questions.map(validatorMapper).reduce(mergeAllReducer);
+    const mergeAll = (acc: IValid, cur: IValid): IValid => ({ ...acc, ...cur });
+    return this.questions.map(assignValidator).reduce(mergeAll);
   }
 
-  async ngOnInit() {
+  async ngOnInit(): Promise<void> {
     try {
       this.questions = this.questionsService.getQuestions();
       this.firstFormGroup = this._formBuilder.group(this.controlsConfig);
       await this.divorcePredService.setUpDivorcePredictor();
-      this.firstFormGroup.valueChanges.subscribe(this.updatePrediction);
+      this.firstFormGroup.valueChanges.subscribe((form: FormGroup): void =>
+        this.updatePrediction(form)
+      );
     } catch (error) {
       console.log(error);
     }
   }
 
-  private updatePrediction = (form: any): void => {
+  private updatePrediction(form: FormGroup): void {
     this.prediction = this.divorcePredService.getPrediction(form);
-  };
+  }
 }
