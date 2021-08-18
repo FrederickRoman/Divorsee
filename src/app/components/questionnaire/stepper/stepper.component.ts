@@ -11,12 +11,11 @@ import { responseVal } from 'src/app/types/responseVal';
 import { DivorcePredictorService } from 'src/app/service/divorcePredictor/divorce-predictor.service';
 import { QuestionProviderService } from 'src/app/service/questionProvider/question-provider.service';
 
+type control = (control: AbstractControl) => ValidationErrors | null;
 interface IValid {
-  [x: string]: (
-    | string
-    | ((control: AbstractControl) => ValidationErrors | null)
-  )[];
+  [x: string]: (string | control)[];
 }
+
 const QUESTION_RESPONSE_VALUE_OPTIONS: readonly responseVal[] = Object.freeze([
   '1',
   '2',
@@ -56,7 +55,7 @@ export class StepperComponent implements OnInit {
 
   get controlsConfig(): IValid {
     const assignValidator = (q: IFomatedQuestion): IValid => ({
-      [q.ctrl]: ['', Validators.required],
+      [q.ctrl]: ['3', Validators.required],
     });
     const mergeAll = (acc: IValid, cur: IValid): IValid => ({ ...acc, ...cur });
     return this.questions.map(assignValidator).reduce(mergeAll);

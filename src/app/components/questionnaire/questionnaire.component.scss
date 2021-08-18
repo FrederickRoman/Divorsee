@@ -1,0 +1,18 @@
+$toolbar-z-index: 1100;
+
+@mixin hover-fixed {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.questionnaire_progress-bar {
+  @include hover-fixed;
+  z-index: $toolbar-z-index;
+}
+
+::ng-deep .mat-progress-bar {
+  height: 10px !important;
+}

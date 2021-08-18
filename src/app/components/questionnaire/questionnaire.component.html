@@ -1,2 +1,11 @@
-<stepper></stepper>
-<p>questionnaire works!</p>
+<mat-progress-bar
+  *ngIf="showProgressBar"
+  [color]="progressBarColor"
+  mode="determinate"
+  [value]="progressBarValue"
+  class="questionnaire_progress-bar"
+>
+</mat-progress-bar>
+<span #stepperQuestionnaire>
+  <stepper></stepper>
+</span>
