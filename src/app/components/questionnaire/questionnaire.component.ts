@@ -16,6 +16,7 @@ export class QuestionnaireComponent implements OnInit {
   @ViewChild('stepperQuestionnaire')
   stepperQuestionnaire: ElementRef<HTMLElement> | null = null;
   showProgressBar: boolean = false;
+  didQuestionnaire: boolean = false;
   progressBarValue: number = 0;
   readonly progressBarColor: ThemePalette = 'accent';
 
@@ -28,14 +29,18 @@ export class QuestionnaireComponent implements OnInit {
     if (this.stepperQuestionnaire) {
       const stepperQnEl: HTMLElement = this.stepperQuestionnaire.nativeElement;
       const bounding: DOMRect = stepperQnEl.getBoundingClientRect();
-      const showProgressBar: boolean = bounding.top <= 0;
-      if (showProgressBar) {
+      const scrolledToQuestionnaire: boolean = bounding.top <= 0;
+      if (scrolledToQuestionnaire) {
         const { pageYOffset } = window;
         const { scrollHeight } = document.documentElement;
         const scrollRatio: number = pageYOffset / scrollHeight;
         this.progressBarValue = scrollRatio * 100;
       }
-      this.showProgressBar = showProgressBar;
+      this.showProgressBar = scrolledToQuestionnaire && !this.didQuestionnaire;
     }
+  }
+
+  onDidQuestionnaire(isQuestionnaireDone: boolean): void {
+    this.didQuestionnaire = isQuestionnaireDone;
   }
 }

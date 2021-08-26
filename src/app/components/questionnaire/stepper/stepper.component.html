@@ -1,31 +1,32 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-  {{ !isLinear ? "Enable linear mode" : "Disable linear mode" }}
-</button>
-<mat-vertical-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
+<mat-vertical-stepper
+  #stepper
+  [linear]="false"
+  (selectionChange)="stepChanged($event)"
+>
+  <mat-step [stepControl]="formGroup">
+    <form [formGroup]="formGroup">
       <ng-template matStepLabel>Questionnaire</ng-template>
       <section
-        class="questionnaire-options_range"
+        class="questionnaire_options-range"
         aria-label="options range never to always"
       >
         <div><span>Never</span></div>
         <div></div>
         <div></div>
         <div></div>
-        <div class="questionnaire-option_always"><div>Always</div></div>
+        <div><div>Always</div></div>
       </section>
       <mat-divider></mat-divider>
       <span *ngFor="let question of questions; index as i; last as last">
         <mat-label>
-          <p class="questionnaire-question_p">
+          <p class="questionnaire_question-p">
             {{ i + 1 }}. {{ question.text }}
           </p>
         </mat-label>
         <mat-radio-group
           aria-label="Select an option"
           [formControlName]="question.ctrl"
-          class="questionnaire-question_radio-group"
+          class="questionnaire_question-radio_group"
         >
           <mat-radio-button *ngFor="let value of values" [value]="value">
           </mat-radio-button>
@@ -33,62 +34,44 @@
         <mat-divider
           [inset]="true"
           *ngIf="!last"
-          class="questionnaire-question_divider"
+          class="questionnaire_question-divider"
         ></mat-divider>
       </span>
 
-      <div>
-        <button mat-button matStepperNext>Next</button>
+      <div class="questionnaire_done-btn_container">
+        <div></div>
+        <div></div>
+        <button mat-raised-button matStepperNext color="primary">Done</button>
+        <div></div>
+        <div></div>
       </div>
     </form>
   </mat-step>
-  <!-- <mat-step [stepControl]="IKnowFormGroup">
-    <form [formGroup]="IKnowFormGroup">
-      <ng-template matStepLabel>I know ...</ng-template>
-      <span *ngFor="let question of iKnow_questions">
-        <mat-label>
-          <p class="questionnaire-question_p">
-            {{ question.text }}
-          </p>
-        </mat-label>
-        <mat-radio-group
-          aria-label="Select an option"
-          [formControlName]="question.ctrl"
-        >
-          <mat-radio-button
-            *ngFor="let value of values"
-            [value]="value"
-          ></mat-radio-button> </mat-radio-group
-      ></span>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step> -->
-  <!--   <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input
-          matInput
-          formControlName="secondCtrl"
-          placeholder="Ex. 1 Main St, New York, NY"
-          required
-        />
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step> -->
   <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
+    <ng-template matStepLabel>Results</ng-template>
+    <section class="questionnaire_results">
+      <section aria-label="Questionnaire results" class="results">
+        <ng-container
+          *ngIf="divorceProbPercentageText; then results; else noResults"
+        ></ng-container>
+        <ng-template #results>
+          <h1 class="results_header">
+            {{ divorceProbPercentageText }}
+          </h1>
+          <h2 class="results_subheader">chance of divorce</h2>
+        </ng-template>
+        <ng-template #noResults>
+          <h1 class="results_absent">Please, fill out the form</h1>
+        </ng-template>
+      </section>
+      <section class="results_btn-group">
+        <button mat-raised-button matStepperPrevious color="primary">
+          Back
+        </button>
+        <button mat-raised-button color="primary" (click)="reset()">
+          Reset
+        </button>
+      </section>
+    </section>
   </mat-step>
 </mat-vertical-stepper>

@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -6,31 +12,20 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { StepperSelectionEvent } from '@angular/cdk/stepper';
 import IFomatedQuestion from 'src/app/interfaces/IFomatedQuestion';
 import { responseVal } from 'src/app/types/responseVal';
 import { DivorcePredictorService } from 'src/app/service/divorcePredictor/divorce-predictor.service';
 import { QuestionProviderService } from 'src/app/service/questionProvider/question-provider.service';
+import { MatVerticalStepper } from '@angular/material/stepper';
 
 type control = (control: AbstractControl) => ValidationErrors | null;
 interface IValid {
   [x: string]: (string | control)[];
 }
 
-const QUESTION_RESPONSE_VALUE_OPTIONS: readonly responseVal[] = Object.freeze([
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-]);
-const INIT_FORMATED_QUESTION: IFomatedQuestion = Object.freeze({
-  id: 0,
-  ctrl: `Q0Ctrl`,
-  text: '',
-});
-
 /**
- * @title Stepper vertical
+ * @title Questionnaire vertical stepper.
  */
 @Component({
   selector: 'stepper',
@@ -38,14 +33,15 @@ const INIT_FORMATED_QUESTION: IFomatedQuestion = Object.freeze({
   styleUrls: ['stepper.component.scss'],
 })
 export class StepperComponent implements OnInit {
-  isLinear = false;
-  firstFormGroup: FormGroup = new FormGroup({});
-  secondFormGroup: FormGroup = new FormGroup({});
-  IKnowFormGroup: FormGroup = new FormGroup({});
+  @Output() didQuestionnaire = new EventEmitter<boolean>();
 
-  values: readonly responseVal[] = QUESTION_RESPONSE_VALUE_OPTIONS;
-  questions: IFomatedQuestion[] = [INIT_FORMATED_QUESTION];
-  prediction: number[] = [];
+  @ViewChild('stepper') stepper: MatVerticalStepper | null = null;
+
+  formGroup = new FormGroup({});
+  questions: IFomatedQuestion[] = [{ id: 0, ctrl: 'Q0Ctrl', text: '' }];
+  readonly values: responseVal[] = ['1', '2', '3', '4', '5'];
+  initialValues: any = [];
+  divorceProbPercentageText: string = '';
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -53,7 +49,7 @@ export class StepperComponent implements OnInit {
     private divorcePredService: DivorcePredictorService
   ) {}
 
-  get controlsConfig(): IValid {
+  private get controlsConfig(): IValid {
     const assignValidator = (q: IFomatedQuestion): IValid => ({
       [q.ctrl]: ['3', Validators.required],
     });
@@ -64,9 +60,10 @@ export class StepperComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     try {
       this.questions = this.questionsService.getQuestions();
-      this.firstFormGroup = this._formBuilder.group(this.controlsConfig);
+      this.formGroup = this._formBuilder.group(this.controlsConfig);
+      this.initialValues = this.formGroup.value;
       await this.divorcePredService.setUpDivorcePredictor();
-      this.firstFormGroup.valueChanges.subscribe((form: FormGroup): void =>
+      this.formGroup.valueChanges.subscribe((form: FormGroup): void =>
         this.updatePrediction(form)
       );
     } catch (error) {
@@ -74,7 +71,31 @@ export class StepperComponent implements OnInit {
     }
   }
 
+  stepChanged(evt: StepperSelectionEvent): void {
+    const selectedResultsStep: boolean = evt.selectedIndex === 1;
+    console.log(selectedResultsStep);
+    this.didQuestionnaire.emit(selectedResultsStep);
+  }
+
+  reset(): void {
+    this.stepper?.reset();
+    this.formGroup.reset(this.initialValues);
+    this.divorceProbPercentageText = '';
+  }
+
   private updatePrediction(form: FormGroup): void {
-    this.prediction = this.divorcePredService.getPrediction(form);
+    const prediction: number[] = this.divorcePredService.getPrediction(form);
+    this.divorceProbPercentageText = this.formatPrediction(prediction);
+  }
+
+  private formatPrediction(prediction: number[]): string {
+    if (prediction.length) {
+      const divorceProb: number = Number(`${prediction[0]}`.split(',')[0]);
+      if (divorceProb < 0.01) return '< 1 %';
+      else if (divorceProb > 0.99) return '> 99 %';
+      else return ` ~${Math.round(divorceProb * 100)} %`;
+    } else {
+      return '';
+    }
   }
 }
