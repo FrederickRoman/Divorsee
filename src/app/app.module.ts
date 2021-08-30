@@ -12,9 +12,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatStepperModule} from '@angular/material/stepper'; 
 import {MatFormFieldModule} from '@angular/material/form-field'; 
-
 import {MatRadioModule} from '@angular/material/radio'; 
 
+import {MatCardModule} from '@angular/material/card'; 
 import {MatDividerModule} from '@angular/material/divider'; 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +28,7 @@ import { QuestionnaireComponent } from './components/questionnaire/questionnaire
 import { StepperComponent } from './components/questionnaire/stepper/stepper.component';
 import { QuestionComponent } from './components/questionnaire/question/question.component';
 import { MainBannerComponent } from './components/banner/main-banner/main-banner.component';
+import { MainBriefIntroComponent } from './components/content/main-brief-intro/main-brief-intro.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { MainBannerComponent } from './components/banner/main-banner/main-banner
     QuestionnaireComponent,
     StepperComponent,
     QuestionComponent,
-    MainBannerComponent
+    MainBannerComponent,
+    MainBriefIntroComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +57,7 @@ import { MainBannerComponent } from './components/banner/main-banner/main-banner
     MatDividerModule,
     MatGridListModule,
     MatProgressBarModule,
+    MatCardModule
   ],
   exports: [ MatFormFieldModule, MatInputModule ],
   providers: [],
