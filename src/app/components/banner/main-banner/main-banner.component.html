@@ -1,0 +1,40 @@
+<section id="banner_box" role="banner">
+  <div id="banner_container">
+    <div id="img_container" role="figure">
+      <img
+        #background
+        src="./assets/img/hero-img-dp.jpeg"
+        id="banner_bottom-layer"
+      />
+    </div>
+    <header id="banner_top-layer">
+      <div  id="banner_branding">
+        <div>
+          <img
+            src="assets/img/dp-logo.svg"
+            alt="Divorce predictor logo (heart in forturne-telling crystal ball)"
+            width="40"
+            height="40"
+          />
+        </div>
+        <div id="banner_branding-name_container">
+          <div [ngStyle]="centerTextStyle" id="banner_branding-name_text">
+            Divorcast
+          </div>
+        </div>
+      </div>
+      <mat-divider
+        [vertical]="true"
+        [inset]="true"
+        [style.marginLeft]="'40px'"
+      ></mat-divider>
+      <div
+        [ngStyle]="centerTextStyle"
+        [style.marginTop]="'10px'"
+        id="banner-text"
+      >
+        Use AI to predict your chance of divorce without sharing any data.
+      </div>
+    </header>
+  </div>
+</section>

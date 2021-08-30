@@ -27,6 +27,7 @@ import { HomeComponent } from './views/home/home.component';
 import { QuestionnaireComponent } from './components/questionnaire/questionnaire.component';
 import { StepperComponent } from './components/questionnaire/stepper/stepper.component';
 import { QuestionComponent } from './components/questionnaire/question/question.component';
+import { MainBannerComponent } from './components/banner/main-banner/main-banner.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { QuestionComponent } from './components/questionnaire/question/question.
     HomeComponent,
     QuestionnaireComponent,
     StepperComponent,
-    QuestionComponent
+    QuestionComponent,
+    MainBannerComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,7 @@ import { QuestionComponent } from './components/questionnaire/question/question.
     MatRadioModule,
     MatDividerModule,
     MatGridListModule,
-    MatProgressBarModule
+    MatProgressBarModule,
   ],
   exports: [ MatFormFieldModule, MatInputModule ],
   providers: [],
