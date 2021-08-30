@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as AOS from 'aos'
+
 
 @Component({
   selector: 'app-main-brief-intro',
@@ -8,5 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class MainBriefIntroComponent implements OnInit {
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    AOS.init();
+  }
 }
