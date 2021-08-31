@@ -1,0 +1,23 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .toolbar {
+    justify-content: space-between;
+  }
+  
+  .menu-button {
+    float: right;
+  }
+  
+  .menu-links#menu_horizontal {
+    display: none;
+  }
+  @media screen and (min-width: 1280px) {
+    .menu-button {
+      display: none;
+    }
+    .menu-links#menu_horizontal {
+      display: inline-block;
+    }
+  }

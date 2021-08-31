@@ -16,3 +16,13 @@ $toolbar-z-index: 1100;
 ::ng-deep .mat-progress-bar {
   height: 10px !important;
 }
+
+.questionnaire_container {
+  display: grid;
+  place-items: center;
+}
+
+.questionnaire_stepper {
+  max-width: 540px;
+  margin: 30px auto;
+}

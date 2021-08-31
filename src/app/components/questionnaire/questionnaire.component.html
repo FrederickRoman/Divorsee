@@ -6,6 +6,8 @@
   class="questionnaire_progress-bar"
 >
 </mat-progress-bar>
-<span #stepperQuestionnaire>
-  <stepper (didQuestionnaire)="onDidQuestionnaire($event)"> </stepper>
-</span>
+<section class="questionnaire_container">
+  <span #stepperQuestionnaire class="questionnaire_stepper">
+    <stepper (didQuestionnaire)="onDidQuestionnaire($event)"> </stepper>
+  </span>
+</section>

@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -13,7 +12,7 @@ import {
   templateUrl: './main-banner.component.html',
   styleUrls: ['./main-banner.component.scss'],
 })
-export class MainBannerComponent implements AfterViewInit {
+export class MainBannerComponent {
   @Output() startQuestionnaire = new EventEmitter<void>();
 
   @ViewChild('background') bgRef!: ElementRef<HTMLImageElement>;
@@ -23,13 +22,8 @@ export class MainBannerComponent implements AfterViewInit {
     verticalAlign: 'middle',
     lineHeight: '120%',
   };
-  private bgInitTopPosition: number = 0;
+  private bgInitTopPosition: number = -56; // -top
   private readonly PARALLAX_RATIO: number = 1;
-
-  ngAfterViewInit(): void {
-    const { top } = this.bgRef.nativeElement.getBoundingClientRect();
-    this.bgInitTopPosition = -top;
-  }
 
   @HostListener('window:scroll')
   onWindowScroll(): void {

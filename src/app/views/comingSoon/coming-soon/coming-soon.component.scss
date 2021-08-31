@@ -1,0 +1,16 @@
+.comming-soon_container {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.comming-soon_msg {
+  padding: 10px;
+  display: grid;
+  place-items: center;
+  #msg_text {
+    font-size: clamp(2rem, 3rem, 7rem);
+    line-height: 100%;
+    text-align: center;
+  }
+}

@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+
 import {MatProgressBarModule} from '@angular/material/progress-bar'; 
 
 import {MatToolbarModule} from '@angular/material/toolbar'; 
@@ -30,6 +33,10 @@ import { QuestionComponent } from './components/questionnaire/question/question.
 import { MainBannerComponent } from './components/banner/main-banner/main-banner.component';
 import { MainBriefIntroComponent } from './components/content/main-brief-intro/main-brief-intro.component';
 import { MainFooterComponent } from './components/footer/main-footer/main-footer.component';
+import { AboutComponent } from './views/about/about/about.component';
+import { ComingSoonComponent } from './views/comingSoon/coming-soon/coming-soon.component';
+import { PageNotFoundComponent } from './views/404/page-not-found/page-not-found.component';
+import { MainNavComponent } from './components/nav/main-nav/main-nav.component';
 
 
 @NgModule({
@@ -41,7 +48,11 @@ import { MainFooterComponent } from './components/footer/main-footer/main-footer
     QuestionComponent,
     MainBannerComponent,
     MainBriefIntroComponent,
-    MainFooterComponent
+    MainFooterComponent,
+    AboutComponent,
+    ComingSoonComponent,
+    PageNotFoundComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +70,9 @@ import { MainFooterComponent } from './components/footer/main-footer/main-footer
     MatDividerModule,
     MatGridListModule,
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule,
+    MatSidenavModule,
+    MatListModule
   ],
   exports: [ MatFormFieldModule, MatInputModule ],
   providers: [],

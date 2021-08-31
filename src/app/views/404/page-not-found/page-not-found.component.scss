@@ -1,0 +1,19 @@
+.container {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.msg {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  #msg_text {
+    font-size: clamp(2rem, 3rem, 7rem);
+    line-height: 200%;
+    text-align: center;
+  }
+}

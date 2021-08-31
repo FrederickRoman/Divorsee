@@ -15,6 +15,7 @@ import { ThemePalette } from '@angular/material/core';
 export class QuestionnaireComponent implements OnInit {
   @ViewChild('stepperQuestionnaire')
   stepperQuestionnaire: ElementRef<HTMLElement> | null = null;
+  
   showProgressBar: boolean = false;
   didQuestionnaire: boolean = false;
   progressBarValue: number = 0;
