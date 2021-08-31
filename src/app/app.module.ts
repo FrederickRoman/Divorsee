@@ -29,6 +29,7 @@ import { StepperComponent } from './components/questionnaire/stepper/stepper.com
 import { QuestionComponent } from './components/questionnaire/question/question.component';
 import { MainBannerComponent } from './components/banner/main-banner/main-banner.component';
 import { MainBriefIntroComponent } from './components/content/main-brief-intro/main-brief-intro.component';
+import { MainFooterComponent } from './components/footer/main-footer/main-footer.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { MainBriefIntroComponent } from './components/content/main-brief-intro/m
     StepperComponent,
     QuestionComponent,
     MainBannerComponent,
-    MainBriefIntroComponent
+    MainBriefIntroComponent,
+    MainFooterComponent
   ],
   imports: [
     BrowserModule,
