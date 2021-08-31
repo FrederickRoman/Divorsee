@@ -2,7 +2,9 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  EventEmitter,
   HostListener,
+  Output,
   ViewChild,
 } from '@angular/core';
 
@@ -12,6 +14,8 @@ import {
   styleUrls: ['./main-banner.component.scss'],
 })
 export class MainBannerComponent implements AfterViewInit {
+  @Output() startQuestionnaire = new EventEmitter<void>();
+
   @ViewChild('background') bgRef!: ElementRef<HTMLImageElement>;
 
   centerTextStyle: { [klass: string]: string } = {
@@ -32,5 +36,9 @@ export class MainBannerComponent implements AfterViewInit {
     const parallaxShift: number = this.PARALLAX_RATIO * window.scrollY;
     const curTopPosition: number = this.bgInitTopPosition - parallaxShift;
     this.bgRef.nativeElement.style.top = `${curTopPosition}px`;
+  }
+
+  start(): void {
+    this.startQuestionnaire.emit();
   }
 }
