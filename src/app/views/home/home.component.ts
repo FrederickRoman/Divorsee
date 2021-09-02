@@ -5,13 +5,11 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   @ViewChild('questionnaire', { read: ElementRef })
   questionnaireRef!: ElementRef;
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   startQuestionnaire() {
     this.questionnaireRef.nativeElement.scrollIntoView({ behavior: 'smooth' });

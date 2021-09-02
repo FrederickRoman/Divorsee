@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 interface ILink {
   path: string;
   text: string;
+  icon: string;
   id: string;
 }
 
@@ -13,9 +14,14 @@ interface ILink {
 })
 export class MainNavComponent implements OnInit {
   readonly links: ILink[] = [
-    { path: '/', text: 'Home', id: 'home' },
-    { path: '/about', text: 'About', id: 'about' },
-    { path: '/comingSoon', text: 'Contact', id: 'contact' },
+    { path: '/', text: 'Home', icon: 'home', id: 'home' },
+    { path: '/about', text: 'About', icon: 'info', id: 'about' },
+    {
+      path: '/comingSoon',
+      text: 'Contact',
+      icon: 'contact_mail',
+      id: 'contact',
+    },
   ];
 
   constructor() {}

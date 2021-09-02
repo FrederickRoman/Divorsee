@@ -1,7 +1,28 @@
+@use "src/styles/layouts.scss";
+@use "src/styles/variables.scss";
+
+@mixin parallax-position($layer) {
+  @if ($layer == top) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if($layer == bottom) {
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+}
+
+@mixin container-flex-branding {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 #banner_box {
-  position: relative;
-  top: 0px;
-  left: 0px;
+  @include parallax-position("bottom");
   #banner_container {
     height: 400px;
     overflow: hidden;
@@ -9,55 +30,44 @@
 }
 
 #banner_top-layer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background: rgba(1, 1, 1, 0.5);
   max-width: 500px;
   padding: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  @include parallax-position("top");
+  @include container-flex-branding;
   #banner_branding {
-    display: grid;
-    place-items: center;
+    @include layouts.place-center;
     gap: 5px;
+    #banner_branding_logo-container {
+      @include layouts.place-center;
+    }
   }
   #banner-text {
     font-size: 1.2em;
-    color: white;
+    @include variables.custom-color("primary-light-text");
     padding: 5px;
-    // text-align: "center";
-    // vertical-align: "middle";
-    //line-height: 100%;
   }
 }
 
 #banner_branding-name_container {
-  display: grid;
-  place-items: center;
-}
-
-#banner_branding-name_text {
-  font-size: 3em;
-  color: white;
-  margin-top: 5px;
-}
-
-#banner_start-button {
-  font-size: 1em;
-  color: white;
+  @include layouts.place-center;
+  #banner_branding-name_text {
+    font-size: 3em;
+    color: white;
+    margin-top: 5px;
+  }
+  #banner_start-button_container {
+    @include layouts.place-center;
+    #banner_start-button {
+      font-size: 1em;
+      @include variables.custom-color("primary-light-text");
+    }
+  }
 }
 
 #img_container {
-  display: grid;
-  place-items: center;
   #banner_bottom-layer {
-    position: relative;
-    top: 0px;
-    left: 0px;
+    @include parallax-position("bottom");
     width: 100%;
     min-height: 900px;
   }

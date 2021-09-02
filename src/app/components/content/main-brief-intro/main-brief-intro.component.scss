@@ -1,24 +1,27 @@
+@use "src/styles/variables.scss";
+@use "src/styles/layouts.scss";
+
+$section-bg-color: lightgray;
+$subsection-bg-color: #ffc0cb;
+
 #brief-intro_container {
-  background: lightgray;
+  background: $section-bg-color;
   padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  @include layouts.pancake-flex("parent");
 }
 
 .subsection {
-  flex: 0 1 200px;
+  @include layouts.pancake-flex("child", 200px, 0);
+  @include variables.custom-color("primary-dark-text");
+  background: $subsection-bg-color;
   margin: 10px;
-  color: black;
-  background: #ffc0cb;
   .header_container {
-    display: grid;
-    place-items: center;
-  }
-  .header {
-    text-align: center;
-    vertical-align: middle;
-    line-height: 100%;
+    @include layouts.place-center;
+    .header {
+      text-align: center;
+      vertical-align: middle;
+      line-height: 100%;
+    }
   }
   .content {
     margin-top: 10px;

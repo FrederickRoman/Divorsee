@@ -1,1 +1,77 @@
-<p style="height: 100vh;">about works!</p>
+<main
+  data-aos="fade-right"
+  data-aos-anchor-placement="top-bottom"
+  data-aos-offset="0"
+  style="height: 100vh"
+  id="about_main"
+>
+  <div class="header-container"><h1>About</h1></div>
+  <div id="about-subsections_container">
+    <section class="about_subsection">
+      <div class="header-container"><h2>Service</h2></div>
+      <section>
+        <h3>TLDR</h3>
+        <div>
+          <p>
+            It's divorce predictor trained on public
+            <app-ext-link-a [href]="PUBLIC_RESEARCH_EXT_LINK">
+              research
+            </app-ext-link-a>
+            <app-ext-link-a [href]="DATASET_EXT_LINK"> dataset </app-ext-link-a>
+            that
+            <app-ext-link-a [href]="TF_EXT_LINK">
+              runs in-browser
+            </app-ext-link-a>
+            for free.
+          </p>
+        </div>
+      </section>
+      <section>
+        <h3>Quick Explainer</h3>
+        <p>
+          The predictor is an
+          <app-ext-link-a [href]="ANN_EXT_LINK">
+            artificial neural network (ANN)
+          </app-ext-link-a>
+          ; meaning, that it is a brain-inpired piece of software that trains on
+          data to find patterns and make predictions.
+        </p>
+        <p>
+          In this case, it trained on the
+          <app-ext-link-a [href]="DATASET_EXT_LINK">
+            UCI Divorce Predictors data set
+          </app-ext-link-a>
+          . It was asked to find a pattern between those who got divorced in the
+          dataset and those who didn't. Then this pattern was saved as model on
+          this page. This page then runs this model to make predictions base on
+          the user's responses.
+        </p>
+      </section>
+      <!-- <div>
+      <h3>In-depth Explanation</h3>
+    </div> -->
+    </section>
+    <section class="about_subsection">
+      <div class="header-container"><h2>Author</h2></div>
+      <section>
+        <img src="" alt="" />
+        <div>
+          <p>Hi. I am Frederick Roman the author of this page.</p>
+          <p>
+            I am a software engineer specialized in Deep Learning and skilled at
+            Full-stack web development.
+          </p>
+          <p>
+            To know more about me you can go to
+            <app-ext-link-a [href]="AUTHOR_EXT_LINK">
+              my personal page
+            </app-ext-link-a>
+            , or contacte me through the
+            <a [routerLink]="'/contact'" class="router-link"> contact page </a>.
+          </p>
+          <p>Thanks for your time checking out this project!</p>
+        </div>
+      </section>
+    </section>
+  </div>
+</main>

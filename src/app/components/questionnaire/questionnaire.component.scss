@@ -1,3 +1,5 @@
+@use "src/styles/layouts.scss";
+
 $toolbar-z-index: 1100;
 
 @mixin hover-fixed {
@@ -18,8 +20,7 @@ $toolbar-z-index: 1100;
 }
 
 .questionnaire_container {
-  display: grid;
-  place-items: center;
+  @include layouts.place-center;
 }
 
 .questionnaire_stepper {

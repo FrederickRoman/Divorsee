@@ -8,23 +8,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 
-import {MatProgressBarModule} from '@angular/material/progress-bar'; 
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
-import {MatToolbarModule} from '@angular/material/toolbar'; 
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button'; 
-import {MatStepperModule} from '@angular/material/stepper'; 
-import {MatFormFieldModule} from '@angular/material/form-field'; 
-import {MatRadioModule} from '@angular/material/radio'; 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRadioModule } from '@angular/material/radio';
 
-import {MatCardModule} from '@angular/material/card'; 
-import {MatDividerModule} from '@angular/material/divider'; 
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
 
-import {MatGridListModule} from '@angular/material/grid-list'; 
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { HomeComponent } from './views/home/home.component';
 import { QuestionnaireComponent } from './components/questionnaire/questionnaire.component';
@@ -37,7 +37,7 @@ import { AboutComponent } from './views/about/about/about.component';
 import { ComingSoonComponent } from './views/comingSoon/coming-soon/coming-soon.component';
 import { PageNotFoundComponent } from './views/404/page-not-found/page-not-found.component';
 import { MainNavComponent } from './components/nav/main-nav/main-nav.component';
-
+import { ExtLinkAComponent } from './components/link/ext-link-a/ext-link-a.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,8 @@ import { MainNavComponent } from './components/nav/main-nav/main-nav.component';
     AboutComponent,
     ComingSoonComponent,
     PageNotFoundComponent,
-    MainNavComponent
+    MainNavComponent,
+    ExtLinkAComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,10 +73,10 @@ import { MainNavComponent } from './components/nav/main-nav/main-nav.component';
     MatProgressBarModule,
     MatCardModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
   ],
-  exports: [ MatFormFieldModule, MatInputModule ],
+  exports: [MatFormFieldModule, MatInputModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

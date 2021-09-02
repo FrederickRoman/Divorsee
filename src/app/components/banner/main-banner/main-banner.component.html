@@ -9,7 +9,7 @@
     </div>
     <header id="banner_top-layer">
       <div id="banner_branding">
-        <div>
+        <div id="banner_branding_logo-container">
           <img
             src="assets/img/dp-logo.svg"
             alt="Divorce predictor logo (heart in forturne-telling crystal ball)"
@@ -18,18 +18,20 @@
           />
         </div>
         <div id="banner_branding-name_container">
-          <div [ngStyle]="centerTextStyle" id="banner_branding-name_text">
-            Divorcast
-          </div>
           <div>
-            <button
-              mat-raised-button
-              color="warn"
-              (click)="start()"
-              id="banner_start-button"
-            >
-              Start
-            </button>
+            <div [ngStyle]="centerTextStyle" id="banner_branding-name_text">
+              Divorcast
+            </div>
+            <div id="banner_start-button_container">
+              <button
+                mat-raised-button
+                color="warn"
+                (click)="start()"
+                id="banner_start-button"
+              >
+                Start
+              </button>
+            </div>
           </div>
         </div>
       </div>

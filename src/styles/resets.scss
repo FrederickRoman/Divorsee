@@ -1,0 +1,6 @@
+@use "src/styles/variables.scss";
+
+@mixin link-reset {
+  @include variables.custom-color("primary-light-text");
+  text-decoration: none;
+}

@@ -7,7 +7,10 @@
         [routerLink]="link.path"
         (click)="sidenav.toggle()"
       >
-        {{ link.text }}
+        <div class="icon-text-pair">
+          <mat-icon>{{ link.icon }}</mat-icon>
+          <span class="link-text">{{ link.text }}</span>
+        </div>
       </a>
       <a mat-list-item (click)="sidenav.toggle()">
         <button mat-icon-button color="accent" aria-label="close navigation">
@@ -19,25 +22,35 @@
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <mat-toolbar-row class="toolbar">
-        <span>
-          <a [routerLink]="'/'">
-            <img
-              src="assets/img/dp-logo.svg"
-              alt="Divorce predictor logo (heart in forturne-telling crystal ball)"
-              width="30"
-              height="30"
-            />
-            <span>Divorcast</span>
+        <span id="home-link">
+          <a [routerLink]="'/'" class="menu-link_horizontal">
+            <div class="icon-text-pair">
+              <span class="link-icon">
+                <img
+                  src="assets/img/dp-logo.svg"
+                  alt="Divorce predictor logo (heart in forturne-telling crystal ball)"
+                  width="25"
+                  height="25"
+                />
+              </span>
+              <span>Divorcast</span>
+            </div>
           </a>
         </span>
         <span class="menu-spacer"></span>
         <div class="menu-links" id="menu_horizontal">
-          <a
-            *ngFor="let link of links; trackBy: trackByFn"
-            [routerLink]="link.path"
-          >
-            {{ link.text }}
-          </a>
+          <ng-container *ngFor="let link of links; trackBy: trackByFn">
+            <a
+              *ngIf="link.path !== '/'"
+              [routerLink]="link.path"
+              class="menu-link_horizontal"
+            >
+              <div class="icon-text-pair">
+                <mat-icon>{{ link.icon }}</mat-icon>
+                <span class="link-text">{{ link.text }}</span>
+              </div>
+            </a>
+          </ng-container>
         </div>
         <button mat-icon-button class="menu-button">
           <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
@@ -46,5 +59,6 @@
     </mat-toolbar>
 
     <ng-content></ng-content>
+
   </mat-sidenav-content>
 </mat-sidenav-container>

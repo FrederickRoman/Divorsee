@@ -1,0 +1,23 @@
+@use "src/styles/layouts.scss";
+@use "src/styles/variables.scss";
+
+#about_main {
+  margin: 20px;
+  #about-subsections_container {
+    @include layouts.pancake-flex("parent");
+    .about_subsection {
+      @include layouts.pancake-flex("child");
+    }
+  }
+}
+
+.header-container {
+  @include layouts.place-center;
+}
+
+p {
+  @include variables.custom-color("primary-light-text");
+  a.router-link {
+    @include variables.custom-color("primary-light-text");
+  }
+}

@@ -1,23 +1,49 @@
+@use "src/styles/layouts.scss";
+
 .example-spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.toolbar {
+  justify-content: space-between;
+}
+
+.menu-button {
+  float: right;
+}
+
+.menu-links#menu_horizontal {
+  display: none;
+}
+
+.menu-link_horizontal {
+  color: white;
+  text-decoration: none;
+  margin: auto 10px;
+  .link-icon {
+    @include layouts.place-center;
   }
-  
-  .toolbar {
-    justify-content: space-between;
-  }
-  
+}
+
+#home-link {
+  margin-top: 5px;
+}
+
+.icon-text-pair {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link-text {
+  margin: auto 5px;
+}
+
+@media screen and (min-width: 1280px) {
   .menu-button {
-    float: right;
-  }
-  
-  .menu-links#menu_horizontal {
     display: none;
   }
-  @media screen and (min-width: 1280px) {
-    .menu-button {
-      display: none;
-    }
-    .menu-links#menu_horizontal {
-      display: inline-block;
-    }
+  .menu-links#menu_horizontal {
+    display: flex;
   }
+}

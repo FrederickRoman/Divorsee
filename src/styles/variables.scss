@@ -1,0 +1,10 @@
+$primary-light-text: #ddd;
+$primary-dark-text: #333;
+
+@mixin custom-color($color-role) {
+  @if ($color-role == primary-light-text) {
+    color: $primary-light-text;
+  } @else if ($color-role == primary-dark-text) {
+    color: $primary-dark-text;
+  }
+}

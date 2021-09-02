@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-footer.component.scss'],
 })
 export class MainFooterComponent implements OnInit {
+  readonly AUTHOR_EXT_LINK: string = 'https://www.frederickroman.com';
   readonly curYear: number = new Date().getFullYear();
 
   constructor() {}

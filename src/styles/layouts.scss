@@ -1,0 +1,14 @@
+@mixin place-center {
+  display: grid;
+  place-content: center;
+}
+
+@mixin pancake-flex($relationship, $flex-basis: 600px, $flex-grow: 1) {
+  @if ($relationship == parent) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  } @else if ($relationship == child) {
+    flex: $flex-grow 1 $flex-basis;
+  }
+}

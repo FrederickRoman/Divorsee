@@ -1,13 +1,13 @@
+@use "src/styles/layouts.scss";
+
 .comming-soon_container {
   height: 100vh;
-  display: grid;
-  place-items: center;
+  @include layouts.place-center;
 }
 
 .comming-soon_msg {
   padding: 10px;
-  display: grid;
-  place-items: center;
+  @include layouts.place-center;
   #msg_text {
     font-size: clamp(2rem, 3rem, 7rem);
     line-height: 100%;
