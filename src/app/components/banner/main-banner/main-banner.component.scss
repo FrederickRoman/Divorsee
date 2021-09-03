@@ -22,11 +22,13 @@
   align-items: center;
 }
 
+$fallback-bg-color: #d8bfd8;
 #banner_box {
   @include parallax-position("bottom");
   #banner_container {
     height: 400px;
     overflow: hidden;
+    background: $fallback-bg-color;
   }
 }
 

@@ -1,0 +1,9 @@
+$divorsee-dark-components-primary: mat-palette($mat-purple, 700, 800, 900);
+$divorsee-dark-components-accent: mat-palette($mat-blue-gray, A200, A100, A400);
+$divorsee-dark-components-warn: mat-palette($mat-orange);
+
+$divorsee-dark-theme: mat-dark-theme(
+  $divorsee-dark-components-primary,
+  $divorsee-dark-components-accent,
+  $divorsee-dark-components-warn
+);
