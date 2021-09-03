@@ -56,7 +56,7 @@ import { ExtLinkAComponent } from './components/link/ext-link-a/ext-link-a.compo
     ExtLinkAComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,

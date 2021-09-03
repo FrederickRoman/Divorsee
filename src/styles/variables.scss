@@ -1,10 +1,18 @@
+@use "sass:color";
+
 $primary-light-text: #ddd;
 $primary-dark-text: #333;
+$primary-lightest-text: color.scale($primary-light-text, $lightness: 60%);
+$primary-darkest-text: color.scale($primary-dark-text, $lightness: -60%);
 
 @mixin custom-color($color-role) {
   @if ($color-role == primary-light-text) {
     color: $primary-light-text;
   } @else if ($color-role == primary-dark-text) {
     color: $primary-dark-text;
+  } @else if ($color-role == primary-darkest-text) {
+    color: $primary-darkest-text;
+  } @else if ($color-role == primary-lightest-text) {
+    color: $primary-lightest-text;
   }
 }

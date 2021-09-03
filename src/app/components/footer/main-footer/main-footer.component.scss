@@ -1,5 +1,9 @@
+@use "src/styles/variables.scss";
 @use "src/styles/layouts.scss";
 
 #footer {
   @include layouts.place-center;
+  #copyright_text {
+    @include variables.custom-color("primary-lightest-text");
+  }
 }

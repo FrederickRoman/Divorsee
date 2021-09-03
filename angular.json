@@ -20,14 +20,15 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/private-divorce-predictor",
+            "outputPath": "dist/private-divorce-predictor/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/robots.txt"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
@@ -135,6 +136,65 @@
               "devServerTarget": "private-divorce-predictor:serve:production"
             }
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/private-divorce-predictor/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "optimization": false,
+            "sourceMap": true,
+            "extractLicenses": false
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "private-divorce-predictor:build:development",
+              "serverTarget": "private-divorce-predictor:server:development"
+            },
+            "production": {
+              "browserTarget": "private-divorce-predictor:build:production",
+              "serverTarget": "private-divorce-predictor:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "private-divorce-predictor:build:production",
+              "serverTarget": "private-divorce-predictor:server:production"
+            },
+            "development": {
+              "browserTarget": "private-divorce-predictor:build:development",
+              "serverTarget": "private-divorce-predictor:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

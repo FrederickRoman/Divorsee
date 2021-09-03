@@ -1,4 +1,6 @@
+@use "src/styles/variables.scss";
 @use "src/styles/layouts.scss";
+@use "src/styles/typography.scss";
 
 .example-spacer {
   flex: 1 1 auto;
@@ -10,6 +12,7 @@
 
 .menu-button {
   float: right;
+  @include variables.custom-color("primary-lightest-text");
 }
 
 .menu-links#menu_horizontal {
@@ -17,7 +20,7 @@
 }
 
 .menu-link_horizontal {
-  color: white;
+  @include variables.custom-color("primary-lightest-text");
   text-decoration: none;
   margin: auto 10px;
   .link-icon {
@@ -27,6 +30,11 @@
 
 #home-link {
   margin-top: 5px;
+  #brand-name_text {
+    font-size: xx-large;
+    @include variables.custom-color("primary-lightest-text");
+    @include typography.divorsee-font-family;
+  }
 }
 
 .icon-text-pair {

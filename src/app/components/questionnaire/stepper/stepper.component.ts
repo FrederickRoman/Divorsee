@@ -40,6 +40,14 @@ export class StepperComponent implements OnInit {
   formGroup = new FormGroup({});
   questions: IFomatedQuestion[] = [{ id: 0, ctrl: 'Q0Ctrl', text: '' }];
   readonly values: responseVal[] = ['1', '2', '3', '4', '5'];
+  readonly labels: { [val: string]: string } = {
+    '1': 'never',
+    '2': 'rarely',
+    '3': 'sometimes',
+    '4': 'very often',
+    '5': 'always',
+  };
+
   initialValues: any = [];
   divorceProbPercentageText: string = '';
 

@@ -24,11 +24,15 @@
           </p>
         </mat-label>
         <mat-radio-group
-          aria-label="Select an option"
+          aria-label="Select an option from never (1) to always (5)"
           [formControlName]="question.ctrl"
           class="questionnaire_question-radio_group"
         >
-          <mat-radio-button *ngFor="let value of values" [value]="value">
+          <mat-radio-button
+            *ngFor="let value of values"
+            [value]="value"
+            [aria-label]="labels[value]"
+          >
           </mat-radio-button>
         </mat-radio-group>
         <mat-divider

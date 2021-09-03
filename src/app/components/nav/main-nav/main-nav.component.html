@@ -33,7 +33,7 @@
                   height="25"
                 />
               </span>
-              <span>Divorcast</span>
+              <span id="brand-name_text">Divorsee</span>
             </div>
           </a>
         </span>
@@ -52,13 +52,12 @@
             </a>
           </ng-container>
         </div>
-        <button mat-icon-button class="menu-button">
+        <button mat-icon-button aria-label="Navigation menu" class="menu-button">
           <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
         </button>
       </mat-toolbar-row>
     </mat-toolbar>
 
     <ng-content></ng-content>
-
   </mat-sidenav-content>
 </mat-sidenav-container>

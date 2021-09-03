@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /contact/
+Disallow: /api/
+
+Sitemap: https://www.herokuapp.com/divorsee/sitemap.xml

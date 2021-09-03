@@ -1,5 +1,6 @@
 @use "src/styles/layouts.scss";
 @use "src/styles/variables.scss";
+@use "src/styles/typography.scss";
 
 @mixin parallax-position($layer) {
   @if ($layer == top) {
@@ -32,7 +33,7 @@
 #banner_top-layer {
   background: rgba(1, 1, 1, 0.5);
   max-width: 500px;
-  padding: 10px;
+  padding: 20px;
   @include parallax-position("top");
   @include container-flex-branding;
   #banner_branding {
@@ -53,14 +54,17 @@
   @include layouts.place-center;
   #banner_branding-name_text {
     font-size: 3em;
-    color: white;
-    margin-top: 5px;
+    @include variables.custom-color("primary-lightest-text");
+    @include typography.divorsee-font-family;
+    text-shadow: 2px 2px black;
   }
   #banner_start-button_container {
     @include layouts.place-center;
     #banner_start-button {
       font-size: 1em;
-      @include variables.custom-color("primary-light-text");
+      font-weight: bold;
+      @include variables.custom-color("primary-darkest-text");
+      margin-top: 10px;
     }
   }
 }
