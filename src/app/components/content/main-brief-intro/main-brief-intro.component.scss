@@ -2,7 +2,6 @@
 @use "src/styles/layouts.scss";
 
 $section-bg-color: lightgray;
-$subsection-bg-color: #ffc0cb;
 
 #brief-intro_container {
   background: $section-bg-color;
@@ -12,8 +11,8 @@ $subsection-bg-color: #ffc0cb;
 
 .subsection {
   @include layouts.pancake-flex("child", 200px, 0);
-  @include variables.custom-color("primary-dark-text");
-  background: $subsection-bg-color;
+  
+  
   margin: 10px;
   .header_container {
     @include layouts.place-center;

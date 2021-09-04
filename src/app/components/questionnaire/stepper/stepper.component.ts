@@ -17,8 +17,14 @@ import IFomatedQuestion from 'src/app/interfaces/IFomatedQuestion';
 import { responseVal } from 'src/app/types/responseVal';
 import { DivorcePredictorService } from 'src/app/service/divorcePredictor/divorce-predictor.service';
 import { QuestionProviderService } from 'src/app/service/questionProvider/question-provider.service';
-import { MatVerticalStepper } from '@angular/material/stepper';
+import { MatStepper } from '@angular/material/stepper';
 
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { StepperOrientation } from '@angular/material/stepper';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+type orientation = 'horizontal' | 'vertical';
 type control = (control: AbstractControl) => ValidationErrors | null;
 interface IValid {
   [x: string]: (string | control)[];
@@ -35,9 +41,10 @@ interface IValid {
 export class StepperComponent implements OnInit {
   @Output() didQuestionnaire = new EventEmitter<boolean>();
 
-  @ViewChild('stepper') stepper: MatVerticalStepper | null = null;
+  @ViewChild('stepper') stepper: MatStepper | null = null;
 
   formGroup = new FormGroup({});
+  stepperOrientation: Observable<StepperOrientation>;
   questions: IFomatedQuestion[] = [{ id: 0, ctrl: 'Q0Ctrl', text: '' }];
   readonly values: responseVal[] = ['1', '2', '3', '4', '5'];
   readonly labels: { [val: string]: string } = {
@@ -48,14 +55,22 @@ export class StepperComponent implements OnInit {
     '5': 'always',
   };
 
-  initialValues: any = [];
+  initialValues: string[] = [];
   divorceProbPercentageText: string = '';
 
   constructor(
+    breakpointObserver: BreakpointObserver,
     private _formBuilder: FormBuilder,
     private questionsService: QuestionProviderService,
     private divorcePredService: DivorcePredictorService
-  ) {}
+  ) {
+    const MEDIA_QUERY = '(min-width: 800px)';
+    const queryToOrientation = (breakpoint: BreakpointState): orientation =>
+      breakpoint.matches ? 'horizontal' : 'vertical';
+    this.stepperOrientation = breakpointObserver
+      .observe(MEDIA_QUERY)
+      .pipe(map(queryToOrientation));
+  }
 
   private get controlsConfig(): IValid {
     const assignValidator = (q: IFomatedQuestion): IValid => ({

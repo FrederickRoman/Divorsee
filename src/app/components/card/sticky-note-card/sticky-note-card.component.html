@@ -1,0 +1,11 @@
+<mat-card data-aos="zoom-out-right" data-aos-offset="0" id="sticky-note_card">
+  <mat-card-header>
+    <mat-card-title>
+      <ng-content select="[title]"></ng-content>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-divider [inset]="true" [style.borderTopColor]="'black'"></mat-divider>
+  <mat-card-content>
+    <ng-content select="[content]"></ng-content>
+  </mat-card-content>
+</mat-card>

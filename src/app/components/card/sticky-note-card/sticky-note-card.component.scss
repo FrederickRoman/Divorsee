@@ -1,0 +1,6 @@
+@use "src/styles/variables.scss";
+
+#sticky-note_card {
+  @include variables.custom-color("primary-dark-text");
+  background: #ffc0cb;
+}

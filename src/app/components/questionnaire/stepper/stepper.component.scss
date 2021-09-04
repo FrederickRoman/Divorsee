@@ -42,7 +42,7 @@
 }
 
 .questionnaire_results {
-  height: 80vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -53,8 +53,9 @@
   color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
+  margin-top: 2em;
   &_header {
     font-size: 4rem;
   }

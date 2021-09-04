@@ -1,0 +1,31 @@
+[
+    {
+        "title": "What does it do?",
+        "texts": [
+            "It use AI (Deep Neural Networks) to predict your chances of future divorce based on your responses on the questionnaire."
+        ]
+    },
+    {
+        "title": "Without sharing data?",
+        "texts": [
+            "Usually when you fill out a form, you submit it. That is, you send that data out of your computer to a remote server that then computes the prediction (and possibly keeps part of your data).",
+            "In Divorcast, everything is done in your computer.",
+            "Since neural networks require lots of computations, the workload used to be all pushed to servers; but with recent advancements, it is now possible to do some of that in your own computer thus keeping it private."
+        ]
+    },
+    {
+        "title": "How accurate is it?",
+        "texts": [
+            "During test it achieve >90% accuracy in predicting the respondant would divorce. The \"chances\" are actually a measurement of how confident the AI is of its decision.",
+            "For example, if you get \"~80% chance of divorce\" means that the AI is ~80% confident you will get divorce (sorry to break it to you).",
+            "That being said, the predictor is limited by its simplicity and the data it was trained on; so don't get discorage if you don't get want you want."
+        ]
+    },
+    {
+        "title": "Is it really free?",
+        "texts": [
+            "Yes, it is. And it will always be so.",
+            "In fact, I'm offering the whole code as open source and the datasets are public."
+        ]
+    }
+]

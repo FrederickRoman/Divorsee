@@ -1,85 +1,65 @@
 <section id="brief-intro_container">
-  <mat-card data-aos="zoom-out-right" data-aos-offset="0" class="subsection">
-    <mat-card-header>
-      <mat-card-title class="header_container">
-        <h1 class="header">What does it do?</h1>
-      </mat-card-title>
-    </mat-card-header>
-    <mat-divider [inset]="true" [style.borderTopColor]="'black'"></mat-divider>
-    <mat-card-content>
-      <div class="content">
-        <p>
-          It use AI (Deep Neural Networks) to predict your chances of future
-          divorce based on your responses on the questionnaire.
-        </p>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  <mat-card data-aos="zoom-out-right" data-aos-offset="0" class="subsection">
-    <mat-card-header>
-      <mat-card-title class="header_container">
-        <h1 class="header">Without sharing data?</h1>
-      </mat-card-title>
-    </mat-card-header>
-    <mat-divider [inset]="true" [style.borderTopColor]="'black'"></mat-divider>
-    <mat-card-content>
-      <div class="content">
-        <p>
-          Usually when you fill out a form, you submit it. That is, you send
-          that data out of your computer to a remote server that then computes
-          the prediction (and possibly keeps part of your data).
-        </p>
-        <p>In Divorcast, everything is done in your computer.</p>
-        <p>
-          Since neural networks require lots of computations, the workload used
-          to be all pushed to servers; but with recent advancements, it is now
-          possible to do some of that in your own computer thus keeping it
-          private.
-        </p>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  <mat-card data-aos="zoom-out-right" data-aos-offset="0" class="subsection">
-    <mat-card-header>
-      <mat-card-title class="header_container">
-        <h1 class="header">How accurate is it?</h1>
-      </mat-card-title>
-    </mat-card-header>
-    <mat-divider [inset]="true" [style.borderTopColor]="'black'"></mat-divider>
-    <mat-card-content>
-      <div class="content">
-        <p>
-          During test it achieve >90% accuracy in predicting the respondant
-          would divorce. The "chances" are actually a measurement of how
-          confident the AI is of its decision.
-        </p>
-        <p>
-          For example, if you get "~80% chance of divorce" means that the AI is
-          ~80% confident you will get divorce (sorry to break it to you).
-        </p>
-        <p>
-          That being said, the predictor is limited by its simplicity and the
-          data it was trained on; so don't get discorage if you don't get want
-          you want.
-        </p>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  <mat-card data-aos="zoom-out-right" data-aos-offset="0" class="subsection">
-    <mat-card-header>
-      <mat-card-title class="header_container">
-        <h1 class="header">Is it really free?</h1>
-      </mat-card-title>
-    </mat-card-header>
-    <mat-divider [inset]="true" [style.borderTopColor]="'black'"></mat-divider>
-    <mat-card-content>
-      <div class="content">
-        <p>Yes, it is. And it will always be so.</p>
-        <p>
-          In fact, I'm offering the whole code as open source and the datasets
-          are public.
-        </p>
-      </div>
-    </mat-card-content>
-  </mat-card>
+  <app-sticky-note-card class="subsection">
+    <header title class="header_container">
+      <h1 class="header">What does it do?</h1>
+    </header>
+    <div content class="content">
+      <p>
+        It use AI (Deep Neural Networks) to predict your chances of future
+        divorce based on your responses on the questionnaire.
+      </p>
+    </div>
+  </app-sticky-note-card>
+  <app-sticky-note-card class="subsection">
+    <header title class="header_container">
+      <h1 class="header">Without sharing data?</h1>
+    </header>
+    <div content class="content">
+      <p>
+        Usually when you fill out a form, you submit it. That is, you send that
+        data out of your computer to a remote server that then computes the
+        prediction (and possibly keeps part of your data).
+      </p>
+      <p>In Divorcast, everything is done in your computer.</p>
+      <p>
+        Since neural networks require lots of computations, the workload used to
+        be all pushed to servers; but with recent advancements, it is now
+        possible to do some of that in your own computer thus keeping it
+        private.
+      </p>
+    </div>
+  </app-sticky-note-card>
+  <app-sticky-note-card class="subsection">
+    <header title class="header_container">
+      <h1 class="header">How accurate is it?</h1>
+    </header>
+    <div content class="content">
+      <p>
+        During test it achieve >90% accuracy in predicting the respondant would
+        divorce. The "chances" are actually a measurement of how confident the
+        AI is of its decision.
+      </p>
+      <p>
+        For example, if you get "~80% chance of divorce" means that the AI is
+        ~80% confident you will get divorce (sorry to break it to you).
+      </p>
+      <p>
+        That being said, the predictor is limited by its simplicity and the data
+        it was trained on; so don't get discorage if you don't get want you
+        want.
+      </p>
+    </div>
+  </app-sticky-note-card>
+  <app-sticky-note-card class="subsection">
+    <header title class="header_container">
+      <h1 class="header">Is it really free?</h1>
+    </header>
+    <div content class="content">
+      <p>Yes, it is. And it will always be so.</p>
+      <p>
+        In fact, I'm offering the whole code as open source and the datasets are
+        public.
+      </p>
+    </div>
+  </app-sticky-note-card>
 </section>

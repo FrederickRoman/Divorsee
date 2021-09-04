@@ -38,6 +38,7 @@ import { ComingSoonComponent } from './views/comingSoon/coming-soon/coming-soon.
 import { PageNotFoundComponent } from './views/404/page-not-found/page-not-found.component';
 import { MainNavComponent } from './components/nav/main-nav/main-nav.component';
 import { ExtLinkAComponent } from './components/link/ext-link-a/ext-link-a.component';
+import { StickyNoteCardComponent } from './components/card/sticky-note-card/sticky-note-card.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ExtLinkAComponent } from './components/link/ext-link-a/ext-link-a.compo
     PageNotFoundComponent,
     MainNavComponent,
     ExtLinkAComponent,
+    StickyNoteCardComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -73,7 +75,7 @@ import { ExtLinkAComponent } from './components/link/ext-link-a/ext-link-a.compo
     MatProgressBarModule,
     MatCardModule,
     MatSidenavModule,
-    MatListModule,
+    MatListModule
   ],
   exports: [MatFormFieldModule, MatInputModule],
   providers: [],
