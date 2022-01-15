@@ -39,6 +39,8 @@ import { PageNotFoundComponent } from './views/404/page-not-found/page-not-found
 import { MainNavComponent } from './components/nav/main-nav/main-nav.component';
 import { ExtLinkAComponent } from './components/link/ext-link-a/ext-link-a.component';
 import { StickyNoteCardComponent } from './components/card/sticky-note-card/sticky-note-card.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,13 @@ import { StickyNoteCardComponent } from './components/card/sticky-note-card/stic
     MatProgressBarModule,
     MatCardModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   exports: [MatFormFieldModule, MatInputModule],
   providers: [],
