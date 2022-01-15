@@ -11,7 +11,8 @@
     "dev:ssr": "ng run private-divorce-predictor:serve-ssr",
     "serve:ssr": "node dist/private-divorce-predictor/server/main.js",
     "build:ssr": "ng build && ng run private-divorce-predictor:server",
-    "prerender": "ng run private-divorce-predictor:prerender"
+    "prerender": "ng run private-divorce-predictor:prerender",
+    "serve-local-prerendered-pwa":"npx http-server -c-1 --port 4200 dist/private-divorce-predictor/browser"
   },
   "private": true,
   "dependencies": {
