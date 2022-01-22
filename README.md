@@ -1,27 +1,56 @@
-# PrivateDivorcePredictor
+# Divorsee
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+<div style="display:flex; flex-direction:column;"><img src="https://github.com/FrederickRoman/Divorsee/blob/main/src/assets/icons/icon-512x512.png" alt="Divorsee logo" height="320"/>
+</div>
 
-## Development server
+## Use AI to predict your chance of divorce without sharing any data. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+It uses a neural network to predict your chances of future divorce based on your responses on the questionnaire. It runs client-side only, and never send data back to a server.
 
-## Code scaffolding
+The neural network was trained on the UCI divorce prediction dataset.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This repository contains all client-side code. The training is this other repository.
 
-## Build
+<div style="display:flex; justify-content:center; align-items:center;">
+    <img src="https://github.com/FrederickRoman/Divorsee/blob/main/docs/mockups/Banner_iPhone%205_SE.png" height="300" alt="Banner mockup"/>
+    <img src="https://github.com/FrederickRoman/Divorsee/blob/main/docs/mockups/Result_iPhone%205_SE.png" height="300" alt="Results mockup"/>
+</div>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Live website
 
-## Running unit tests
+See [Divorsee](https://divorsee.netlify.app).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Main libraries and frameworks used for this project
 
-## Running end-to-end tests
++ Angular (12)
++ Angular Material
++ Tensorflow.js
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Project setup
 
-## Further help
+```
+npm install
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Compiles and hot-reloads
+
+```
+npm run start
+```
+
+### Prerenders for production
+
+```
+npm run prerender
+```
+
+### Serve locally prerenderd PWA with production enviroment (requires http-server package)
+ 
+```
+npm run serve-local-prerendered-pwa
+```
+
+
+
+
+
