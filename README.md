@@ -9,7 +9,7 @@ It uses a neural network to predict your chances of future divorce based on your
 
 The neural network was trained on the UCI divorce prediction dataset.
 
-This repository contains all client-side code. The training is this other repository.
+This repository contains all client-side code. The training is on its own [repository](https://github.com/FrederickRoman/divorce-predictor).
 
 <div style="display:flex; justify-content:center; align-items:center;">
     <img src="https://github.com/FrederickRoman/Divorsee/blob/main/docs/mockups/Banner_iPhone%205_SE.png" height="300" alt="Banner mockup"/>
