@@ -62,5 +62,7 @@
   "engines": {
     "node": "14.x",
     "npm": "7.x"
-  }
+  },
+  "license": "SEE LICENSE IN ./LICENSE",
+  "author": "Frederick Roman"
 }
